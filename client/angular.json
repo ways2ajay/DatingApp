@@ -19,6 +19,7 @@
             "polyfills": [
               "zone.js"
             ],
+            "sourceMap": true,
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
@@ -29,6 +30,8 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/bootswatch/dist/united/bootstrap.min.css",
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.css"
             ],
             "scripts": []

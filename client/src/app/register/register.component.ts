@@ -1,6 +1,7 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input, output, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountServiceService } from '../_Services/account-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { AccountServiceService } from '../_Services/account-service.service';
 export class RegisterComponent {
 constructor(private accountService: AccountServiceService) { }
   //private accountService = inject(AccountServiceService);
+  private toastr = inject(ToastrService);
  
   model:any={};
   usersFromHomeComponent= input.required<any>();
@@ -25,7 +27,7 @@ constructor(private accountService: AccountServiceService) { }
         console.log(response);
         this.cancel();
       },
-      error: (error:any) => console.log(error)
+      error: (error:any) => this.toastr.error(error.error)
     })
   }
 
@@ -34,7 +36,5 @@ constructor(private accountService: AccountServiceService) { }
   } 
 
 }
-function inject(AccountServiceService: any) {
-  throw new Error('Function not implemented.');
-}
+
 

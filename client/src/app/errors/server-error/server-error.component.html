@@ -1,0 +1,11 @@
+<div class="container">
+    <h4>Internal Server Error</h4>
+    @if(error){
+        <h5 class="text-danger">Error: {{error.message}}</h5>
+        <p class="font-weight-bold"> Dotnet Error</p>
+        <p class="font-weight-bold"> Below is the detailed stack trace</p>
+        <code class="mt-5" style="background-color: whitesmoke;">
+            {{error.details}}
+        </code>
+    }
+</div>

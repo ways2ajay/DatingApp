@@ -1,14 +1,15 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+
 import { NavComponent } from "./nav/nav.component";
 import { AccountServiceService } from './_Services/account-service.service';
-import { HomeComponent } from './home/home.component';
+//import { HomeComponent } from './home/home.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [ NavComponent, HomeComponent]
+  imports: [RouterOutlet, NavComponent]
 })
 export class AppComponent implements OnInit {
   title = 'Dating App';
