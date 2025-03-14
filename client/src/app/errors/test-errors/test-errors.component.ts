@@ -1,5 +1,6 @@
 import { Component, inject} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -11,30 +12,31 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class TestErrorsComponent {
   httpClient = inject(HttpClient);
   validationErrors: string[] = [];
+  baseUrl = environment.apiUrl;
 
   get400Error() {
-    this.httpClient.get('https://localhost:5001/api/buggy/bad-request').subscribe({
+    this.httpClient.get(this.baseUrl+ 'buggy/bad-request').subscribe({
       next: response =>  console.log(response), 
       error: error => console.log(error)
     });
   }
 
   get401Error() {
-    this.httpClient.get('https://localhost:5001/api/buggy/auth').subscribe({
+    this.httpClient.get(this.baseUrl+'buggy/auth').subscribe({
       next: response =>  console.log(response), 
       error: error => console.log(error)
     });
   }
 
   get404Error() {
-    this.httpClient.get('https://localhost:5001/api/buggy/not-found').subscribe({
+    this.httpClient.get(this.baseUrl+'buggy/not-found').subscribe({
       next: response =>  console.log(response), 
       error: error => console.log(error)
     });
   }
   
   get500Error() {
-    this.httpClient.get('https://localhost:5001/api/buggy/server-error').subscribe({
+    this.httpClient.get(this.baseUrl+'buggy/server-error').subscribe({
       next: response =>  console.log(response), 
       error: error => console.log(error)
     });
@@ -45,7 +47,7 @@ export class TestErrorsComponent {
       'Content-Type': 'application/json',
     });
 
-    this.httpClient.post('https://localhost:5001/api/account/register',
+    this.httpClient.post(this.baseUrl+'account/register',
       '{}',
       { headers }).subscribe({
       next: response =>  console.log(response), 

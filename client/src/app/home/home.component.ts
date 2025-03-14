@@ -1,19 +1,14 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { RegisterComponent } from "../register/register.component";
-import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+//import { RegisterComponent } from "../register/register.component";
+
 
 @Component({
   selector: 'app-home',
-  imports: [RegisterComponent],
+  imports: [],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit {
-  users: any;
-  ngOnInit(): void {
-    this.getUsers();
-  }
-  httpClient = inject(HttpClient);
+export class HomeComponent {
   
   registerMode = false;
 
@@ -25,11 +20,5 @@ export class HomeComponent implements OnInit {
     this.registerMode = event;
   }
 
-  private getUsers(){
-    this.httpClient.get('https://localhost:5001/api/users').subscribe({
-      next: (response: any) => this.users = response,
-      error: (error:any) => console.log(error),
-      complete: () => console.log('completed')
-    });
-  }
+
 }

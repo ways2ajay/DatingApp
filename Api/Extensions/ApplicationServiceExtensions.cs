@@ -10,13 +10,14 @@ public static class ApplicationServiceExtensions{
         services.AddControllers();
         services.AddEndpointsApiExplorer();
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-        // services.AddSwaggerGen();
-        // services.AddOpenApi();
+        services.AddSwaggerGen();
+        services.AddOpenApi();
         services.AddDbContext<DataContext>(options =>
         options.UseSqlite(config.GetConnectionString("DefaultConnection"))
         );
         services.AddCors();
         services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<IUserRepository, UserRepository>();
 
         return services;
     }

@@ -18,19 +18,19 @@ namespace API.Controllers;
             if (await UserExists(registerDto.username)){
                 return BadRequest("Username is taken");
             }
-
-            using var hmac = new HMACSHA512();
-            var user = new AppUser{
-                UserName = registerDto.username.ToLower(),
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.password)),
-                PasswordSalt = hmac.Key
-            };
-            context.Users.Add(user);
-            await context.SaveChangesAsync();
-            return Ok(new UserDto{
-                UserName = user.UserName,
-                Token = tokenService.CreateToken(user)
-            });
+            return Ok();
+            // using var hmac = new HMACSHA512();
+            // var user = new AppUser{
+            //     UserName = registerDto.username.ToLower(),
+            //     PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.password)),
+            //     PasswordSalt = hmac.Key
+            // };
+            // context.Users.Add(user);
+            // await context.SaveChangesAsync();
+            // return Ok(new UserDto{
+            //     UserName = user.UserName,
+            //     Token = tokenService.CreateToken(user)
+            // });
         }
         
         private async Task<bool> UserExists(string username){
