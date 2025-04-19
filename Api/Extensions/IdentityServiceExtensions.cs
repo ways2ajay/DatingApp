@@ -10,7 +10,8 @@ public static class IdentityServiceExtensions{
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         .AddJwtBearer(options =>
         {
-            var key = Encoding.UTF8.GetBytes(config["TokenKey"] ?? throw new Exception("cannot access token key from apsettings"));
+            var key = Encoding.UTF8.GetBytes(config["TokenKey"] 
+            ?? throw new Exception("cannot access token key from apsettings"));
             options.TokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuerSigningKey = true,

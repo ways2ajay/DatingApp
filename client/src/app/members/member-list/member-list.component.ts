@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { MembersService } from '../../_Services/members.service';
 import { Member } from '../../_models/Member';
-import { MemberCardComponent } from "../../members/member-card/member-card.component";
+import { MemberCardComponent } from "../member-card/member-card.component";
 
 @Component({
   selector: 'app-member-list',
