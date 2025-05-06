@@ -74,7 +74,8 @@ public class UsersController(IUserRepository userRepository, IMapper mapper
             PublicId = result.Result.PublicId,
             Id = result.Result.PublicId
             };
-
+        if(user.Photos.Count ==0) photo.IsMain = true;
+        
         user.Photos.Add(photo);
 
         if(await userRepository.SaveAllasync()){
